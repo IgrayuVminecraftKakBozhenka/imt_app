@@ -6,4 +6,5 @@
     <string name="main_activity_ok_button">Рассчитать ИМТ</string>
     <string name="result_activity_imt_title">Ваш ИМТ</string>
     <string name="back_button">Назад</string>
+    <string name="exception_empty_input">Введите число!</string>
 </resources>
