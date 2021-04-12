@@ -12,9 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public final class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView recomendation;
-    private TextView tvImt;
-    private Button backButton;
     private ImageView resultImage;
 
     @Override
@@ -22,17 +19,20 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-
         final double high = getInitialValue(MainActivity.INTENT_KEY_HIGH);
         final double weigh = getInitialValue(MainActivity.INTENT_KEY_WEIGHT);
         final double imt = getImt(high, weigh);
         final String imtString = Double.toString(imt);
-        recomendation = findViewById(R.id.result_activity_recomendation);
-        tvImt = findViewById(R.id.result_activity_imt);
-        tvImt.setText(imtString);
+
+        final TextView recomendation = findViewById(R.id.result_activity_recomendation);
         recomendation.setText(getEvaluation(imt));
-        backButton = findViewById(R.id.result_activity_back_button);
+
+        final TextView tvImt = findViewById(R.id.result_activity_imt);
+        tvImt.setText(imtString);
+
+        final Button backButton = findViewById(R.id.result_activity_back_button);
         backButton.setOnClickListener(this);
+
         resultImage = findViewById(R.id.activity_result_image);
         setImageAfterResult(imt);
     }
@@ -89,7 +89,7 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
         return recomend;
     }
 
-    private void setImageAfterResult(double imt) {
+    private void setImageAfterResult(final double imt) {
         if (imt < 16) {
             resultImage.setImageResource(R.drawable.darkholm);
         } else if (imt >= 16.0 && imt <= 18.5) {
