@@ -54,7 +54,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
     private void okClick() {
         final String userHigh = highInput.getText().toString();
         final String userWeight = weightInput.getText().toString();
-        if (userHigh.isEmpty() | userWeight.isEmpty()) {
+        if (userHigh.isEmpty() | userWeight.isEmpty() | userHigh.equals("0") | userWeight.equals("0")) {
             Toast.makeText(getApplicationContext(), R.string.exception_empty_input, Toast.LENGTH_SHORT).show();
         } else {
             final Intent intent = new Intent(this, ResultActivity.class);
