@@ -7,4 +7,11 @@
     <string name="result_activity_imt_title">Ваш ИМТ</string>
     <string name="back_button">Назад</string>
     <string name="exception_empty_input">Введите число!</string>
+    <string name="strong_deficite">Сильный дефицит массы тела, срочно обратитесь к врачу</string>
+    <string name="deficite">Сильный дефицит массы тела, рекомендуется диета</string>
+    <string name="normal">Нормальная масса тела, рекомендуется регулярные занятия спортом</string>
+    <string name="oversize">Предожирение, рекомендуется диета и занятия спортом</string>
+    <string name="fat">Ожирение первой степени, обратитесь к врачу, рекомендуется диета и занятия спортом</string>
+    <string name="too_fat">Ожирение второй степени, обратитесь к врачу, рекомендуется диета и занятия спортом</string>
+    <string name="super_fat">Ожирение третьей степени, вы вообще передвигаетесь?</string>
 </resources>

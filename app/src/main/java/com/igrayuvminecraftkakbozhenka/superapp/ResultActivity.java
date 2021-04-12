@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
     private TextView recomendation;
     private TextView tvImt;
     private Button backButton;
+    private ImageView resultImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,17 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
         recomendation.setText(getEvaluation(imt));
         backButton = findViewById(R.id.result_activity_back_button);
         backButton.setOnClickListener(this);
+        resultImage = findViewById(R.id.activity_result_image);
+        setImageAfterResult(imt);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.result_activity_back_button:
+                finish();
+                break;
+        }
     }
 
     private double getInitialValue(final String key) {
@@ -56,32 +69,43 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
         return weigh / (highMeter * highMeter);
     }
 
-    private String getEvaluation(double imt) {
-        String recomend = "";
+    private int getEvaluation(double imt) {
+        int recomend = 0;
         if (imt < 16) {
-            recomend = "Сильный дефицит массы тела, срочно обратитесь к врачу";
+            recomend = R.string.strong_deficite;
         } else if (imt >= 16.0 && imt <= 18.5) {
-            recomend = "Сильный дефицит массы тела, рекомендуется диета";
+            recomend = R.string.deficite;
         } else if (imt > 18.5 && imt <= 24.99) {
-            recomend = "Нормальная масса тела, рекомендуется регулярные занятия спортом";
+            recomend = R.string.normal;
         } else if (imt >= 25 && imt <= 30) {
-            recomend = "Предожирение, рекомендуется диета и занятия спортом";
+            recomend = R.string.oversize;
         } else if (imt > 30 && imt <= 35) {
-            recomend = "Ожирение первой степени, обратитесь к врачу, рекомендуется диета и занятия спортом";
+            recomend = R.string.fat;
         } else if (imt > 35 && imt <= 40) {
-            recomend = "Ожирение второй степени, обратитесь к врачу, рекомендуется диета и занятия спортом";
+            recomend = R.string.too_fat;
         } else if (imt > 40) {
-            recomend = "Ожирение третьей степени, вы вообще передвигаетесь?";
+            recomend = R.string.super_fat;
         }
         return recomend;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.result_activity_back_button:
-                finish();
-                break;
+    private void setImageAfterResult(double imt) {
+        if (imt < 16) {
+            resultImage.setImageResource(R.drawable.darkholm);
+        } else if (imt >= 16.0 && imt <= 18.5) {
+            resultImage.setImageResource(R.drawable.doge);
+        } else if (imt > 18.5 && imt <= 24.99) {
+            resultImage.setImageResource(R.drawable.chims);
+        } else if (imt >= 25 && imt <= 30) {
+            resultImage.setImageResource(R.drawable.thor);
+        } else if (imt > 30 && imt <= 35) {
+            resultImage.setImageResource(R.drawable.thor);
+        } else if (imt > 35 && imt <= 40) {
+            resultImage.setImageResource(R.drawable.thor);
+        } else if (imt > 40) {
+            resultImage.setImageResource(R.drawable.thor);
         }
     }
+
+
 }
