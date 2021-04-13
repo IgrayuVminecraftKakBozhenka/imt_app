@@ -3,6 +3,7 @@
     <string name="main_activity_title">Посчитать ИМТ</string>
     <string name="main_activity_enter_ur_high">Введите свой рост</string>
     <string name="main_activity_enter_ur_weight">Введите свой вес</string>
+    <string name="main_activity_enter_ur_name">Введите свой вес</string>
     <string name="main_activity_ok_button">Рассчитать ИМТ</string>
     <string name="result_activity_imt_title">Ваш ИМТ</string>
     <string name="back_button">Назад</string>
