@@ -46,13 +46,11 @@
         app:layout_constraintVertical_bias="0.22" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/activity_result_enter_ur_name"
+        android:id="@+id/activity_main_enter_ur_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/main_activity_enter_ur_name"
         android:imeOptions="actionDone"
-        android:inputType="number"
-        android:maxLength="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -15,9 +15,11 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
 
     public final static String INTENT_KEY_HIGH = "intent_key_high";
     public final static String INTENT_KEY_WEIGHT = "intent_key_weight";
+    public final static String INTENT_KEY_NAME = "intent_key_name";
 
     private EditText highInput;
     private EditText weightInput;
+    private EditText nameInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
 
         highInput = findViewById(R.id.main_activity_enter_ur_high);
         weightInput = findViewById(R.id.main_activity_enter_ur_weight);
+        nameInput = findViewById(R.id.activity_main_enter_ur_name);
 
         final Button okButton = findViewById(R.id.main_activity_ok_button);
         okButton.setOnClickListener(this);
@@ -54,12 +57,14 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
     private void okClick() {
         final String userHigh = highInput.getText().toString();
         final String userWeight = weightInput.getText().toString();
-        if (userHigh.isEmpty() | userWeight.isEmpty() | userHigh.equals("0") | userWeight.equals("0")) {
+        final String userName = nameInput.getText().toString();
+        if (userHigh.isEmpty() | userWeight.isEmpty() | userName.isEmpty() | userHigh.equals("0") | userWeight.equals("0")) {
             Toast.makeText(getApplicationContext(), R.string.exception_empty_input, Toast.LENGTH_SHORT).show();
         } else {
             final Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra(INTENT_KEY_HIGH, userHigh);
             intent.putExtra(INTENT_KEY_WEIGHT, userWeight);
+            intent.putExtra(INTENT_KEY_NAME, userName);
             startActivity(intent);
         }
     }

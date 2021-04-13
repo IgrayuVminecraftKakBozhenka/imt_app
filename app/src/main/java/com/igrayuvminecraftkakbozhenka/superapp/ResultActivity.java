@@ -21,6 +21,7 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
 
         final double high = getInitialValue(MainActivity.INTENT_KEY_HIGH);
         final double weigh = getInitialValue(MainActivity.INTENT_KEY_WEIGHT);
+        final String name = getIntent().getStringExtra(MainActivity.INTENT_KEY_NAME);
         final double imt = getImt(high, weigh);
         final String imtString = Double.toString(imt);
 
@@ -35,6 +36,10 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
 
         resultImage = findViewById(R.id.activity_result_image);
         setImageAfterResult(imt);
+
+        ImtRepository saver = new ImtRepository(name, Double.toString(high), Double.toString(weigh), imtString, getApplicationContext());
+        Toast.makeText(getApplicationContext(), saver.getResult(), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
