@@ -6,9 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.igrayuvminecraftkakbozhenka.superapp.data.ImtRepository;
 
 public final class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,11 +35,14 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
         final Button backButton = findViewById(R.id.result_activity_back_button);
         backButton.setOnClickListener(this);
 
+        final Button resultTableButton = findViewById(R.id.activity_result_table_result_button);
+        resultTableButton.setOnClickListener(this);
+
         resultImage = findViewById(R.id.activity_result_image);
         setImageAfterResult(imt);
 
-        ImtRepository saver = new ImtRepository(name, Double.toString(high), Double.toString(weigh), imtString, getApplicationContext());
-        Toast.makeText(getApplicationContext(), saver.getResult(), Toast.LENGTH_SHORT).show();
+        ImtRepository save = new ImtRepository(name, Double.toString(high), Double.toString(weigh), imtString, getApplicationContext());
+
 
     }
 
@@ -47,6 +51,12 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
         switch (v.getId()) {
             case R.id.result_activity_back_button:
                 finish();
+                break;
+            case R.id.activity_result_table_result_button:
+                Intent intent = new Intent(this, ActivityTable.class);
+                intent.putExtra(MainActivity.INTENT_KEY_STORAGE, );
+                intent.put
+                startActivity(intent);
                 break;
         }
     }

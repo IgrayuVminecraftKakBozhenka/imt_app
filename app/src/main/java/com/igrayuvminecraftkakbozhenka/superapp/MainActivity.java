@@ -16,6 +16,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
     public final static String INTENT_KEY_HIGH = "intent_key_high";
     public final static String INTENT_KEY_WEIGHT = "intent_key_weight";
     public final static String INTENT_KEY_NAME = "intent_key_name";
+    public final static String INTENT_KEY_STORAGE = "intent_key_name";
 
     private EditText highInput;
     private EditText weightInput;
