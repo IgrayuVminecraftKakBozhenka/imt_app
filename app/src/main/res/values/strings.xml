@@ -17,4 +17,10 @@
     <string name="super_fat">Ожирение третьей степени, вы вообще передвигаетесь?</string>
     <string name="result_table">Таблица результатов</string>
     <string name="activity_result_save_button">Сохранить</string>
+    <string name="activity_table_table_header">Таблица результатов</string>
+    <string name="activity_table_cell_name">Имя</string>
+    <string name="activity_table_cell_high">Рост</string>
+    <string name="activity_table_cell_weigh">Вес</string>
+    <string name="activity_table_cell_imt">ИМТ</string>
+    <string name="activity_table_clear_button">Очистить</string>
 </resources>

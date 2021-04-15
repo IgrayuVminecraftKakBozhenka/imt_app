@@ -1,33 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/activity_table_result_string"
-        android:layout_width="415dp"
-        android:layout_height="68dp"
-        android:gravity="center"
-        android:textSize="24sp"
-        tools:text = "Имя вес: 100, рост: 200, ИМТ: 20"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.060000002" />
+    <!-- <TextView
+         android:id="@+id/activity_table_result_string"
+         android:layout_width="399dp"
+         android:layout_height="504dp"
+         android:gravity="center_horizontal"
+         android:textSize="24sp"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.060000002"
+         tools:text="Имя вес: 100, рост: 200, ИМТ: 20" /> -->
+
 
     <Button
         android:id="@+id/activity_table_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/back_button"
         android:background="@drawable/circle_button"
+        android:text="@string/back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_table_result_string"
-        app:layout_constraintVertical_bias="0.78" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.83" />
+
+    <Button
+        android:id="@+id/activity_table_clear_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle_button"
+        android:text="@string/activity_table_clear_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.925" />
+
+    <TableLayout
+        android:id="@+id/activity_table_table_layout"
+        android:layout_width="410dp"
+        android:layout_height="544dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:gravity="center"
+                android:text="@string/activity_table_table_header"
+                android:textSize="18sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/activity_table_name_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:text="@string/activity_table_cell_name"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/activity_table_high_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:text="@string/activity_table_cell_high"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/activity_table_weigh_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:text="@string/activity_table_cell_weigh"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/activity_table_weigh_imt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="40sp"
+                android:paddingRight="40sp"
+                android:text="@string/activity_table_cell_imt"
+                android:textSize="18sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/activity_table_one_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="имя" />
+
+            <TextView
+                android:id="@+id/activity_table_two_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="180" />
+
+            <TextView
+                android:id="@+id/activity_table_three_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="75" />
+
+            <TextView
+                android:id="@+id/activity_table_four_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="20" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/activity_table_five_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="любимое" />
+
+            <TextView
+                android:id="@+id/activity_table_six_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="180" />
+
+            <TextView
+                android:id="@+id/activity_table_seven_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="75" />
+
+            <TextView
+                android:id="@+id/activity_table_eight_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="20" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/activity_table_nine_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="моё" />
+
+            <TextView
+                android:id="@+id/activity_table_ten_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="180" />
+
+            <TextView
+                android:id="@+id/activity_table_eleven_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="75" />
+
+            <TextView
+                android:id="@+id/activity_table_twelve_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="18sp"
+                tools:text="20" />
+        </TableRow>
+    </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

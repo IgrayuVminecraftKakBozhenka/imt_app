@@ -15,21 +15,28 @@ public final class ImtRepository {
     private static final String APP_PREFERENCES_WEIGH = "weigh";
     private static final String APP_PREFERENCES_IMT = "imt";
 
-    private final SharedPreferences results;
+    private SharedPreferences results;
 
     public ImtRepository(final Context context) {
         results = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
     }
 
     public void saveResult(ImtModel imtModel) {
-        String parameters = "name: " + imtModel.getName() + " high: " + imtModel.getHigh() + ", weigh: " + imtModel.getWeigh() + ", imt: " + imtModel.getImt();
         SharedPreferences.Editor editor = results.edit();
+        String parameters = results.getString(APP_PREFERENCES_NAME, "")  + imtModel.getName()
+                + imtModel.getHigh()  + imtModel.getWeigh() + imtModel.getImt() + "\n";
         editor.putString(APP_PREFERENCES_NAME, parameters);
         editor.apply();
     }
 
     public Map<String, ?> getResult() {
         return results.getAll();
+    }
+
+    public void clearRepository() {
+        SharedPreferences.Editor editor = results.edit();
+        editor.clear();
+        editor.apply();
     }
 
 
