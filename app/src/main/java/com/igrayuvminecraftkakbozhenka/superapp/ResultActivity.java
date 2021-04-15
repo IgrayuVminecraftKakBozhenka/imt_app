@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.igrayuvminecraftkakbozhenka.superapp.data.ImtRepository;
-
 public final class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView resultImage;
@@ -41,7 +39,7 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
         resultImage = findViewById(R.id.activity_result_image);
         setImageAfterResult(imt);
 
-        ImtRepository save = new ImtRepository(name, Double.toString(high), Double.toString(weigh), imtString, getApplicationContext());
+        //ImtRepository save = new ImtRepository(name, Double.toString(high), Double.toString(weigh), imtString, getApplicationContext());
 
 
     }
@@ -53,9 +51,9 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
                 finish();
                 break;
             case R.id.activity_result_table_result_button:
-                Intent intent = new Intent(this, ActivityTable.class);
-                intent.putExtra(MainActivity.INTENT_KEY_STORAGE, );
-                intent.put
+                Intent intent = new Intent(this, TableActivity.class);
+                //intent.putExtra(MainActivity.INTENT_KEY_STORAGE, );
+                //intent.put
                 startActivity(intent);
                 break;
         }
