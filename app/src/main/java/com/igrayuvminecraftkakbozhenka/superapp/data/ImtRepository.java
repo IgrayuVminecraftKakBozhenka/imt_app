@@ -23,8 +23,8 @@ public final class ImtRepository {
 
     public void saveResult(ImtModel imtModel) {
         SharedPreferences.Editor editor = results.edit();
-        String parameters = results.getString(APP_PREFERENCES_NAME, "")  + imtModel.getName()
-                + imtModel.getHigh()  + imtModel.getWeigh() + imtModel.getImt() + "\n";
+        String parameters = results.getString(APP_PREFERENCES_NAME, "")  + imtModel.getName() + ","
+                + imtModel.getHigh() + "," + imtModel.getWeigh()+ "," + imtModel.getImt() + ",";
         editor.putString(APP_PREFERENCES_NAME, parameters);
         editor.apply();
     }

@@ -1,15 +1,19 @@
 package com.igrayuvminecraftkakbozhenka.superapp;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.igrayuvminecraftkakbozhenka.superapp.data.ImtRepository;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public final class TableActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,15 +35,23 @@ public final class TableActivity extends AppCompatActivity implements View.OnCli
         String resultString = (String) result.get("name");
         String[] resultToTable = resultString.split(",");
 
-        TextView firstCell = findViewById(R.id.activity_table_one_cell);
-        TextView secondCell = findViewById(R.id.activity_table_two_cell);
-        TextView thirdCell = findViewById(R.id.activity_table_three_cell);
-        TextView fourCell = findViewById(R.id.activity_table_four_cell);
+        int columns = 4;
+        int rows = resultToTable.length / 4;
+        int iterator = 0;
+        TableLayout table = findViewById(R.id.activity_table_table_layout);
 
-        firstCell.setText(resultToTable[0]);
-        secondCell.setText(resultToTable[1]);
-        thirdCell.setText(resultToTable[2]);
-        fourCell.setText(resultToTable[3]);
+        for (int i = 0; i < rows; i++) {
+            TableRow tableRow = new TableRow(this);
+            tableRow.setLayoutParams(new TableLayout.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+            for (int j = 0; j < columns; j++) {
+                TextView cell = new TextView(this);
+                cell.setText(resultToTable[iterator]);
+                tableRow.addView(cell, j);
+                iterator++;
+            }
+            table.addView(tableRow, i);
+        }
+
 
     }
 
