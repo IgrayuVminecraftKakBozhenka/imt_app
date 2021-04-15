@@ -9,32 +9,42 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.igrayuvminecraftkakbozhenka.superapp.data.ImtRepository;
+import com.igrayuvminecraftkakbozhenka.superapp.models.ImtModel;
+
 public final class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView resultImage;
+    private String name;
+    private double high;
+    private double weigh;
+    private double imt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        final double high = getInitialValue(MainActivity.INTENT_KEY_HIGH);
-        final double weigh = getInitialValue(MainActivity.INTENT_KEY_WEIGHT);
-        final String name = getIntent().getStringExtra(MainActivity.INTENT_KEY_NAME);
-        final double imt = getImt(high, weigh);
+        high = getInitialValue(MainActivity.INTENT_KEY_HIGH);
+        weigh = getInitialValue(MainActivity.INTENT_KEY_WEIGHT);
+        name = getIntent().getStringExtra(MainActivity.INTENT_KEY_NAME);
+        imt = getImt(high, weigh);
         final String imtString = Double.toString(imt);
 
-        final TextView recomendation = findViewById(R.id.result_activity_recomendation);
+        final TextView recomendation = findViewById(R.id.activity_result_recomendation);
         recomendation.setText(getEvaluation(imt));
 
         final TextView tvImt = findViewById(R.id.result_activity_imt);
         tvImt.setText(imtString);
 
-        final Button backButton = findViewById(R.id.result_activity_back_button);
+        final Button backButton = findViewById(R.id.activity_result_back_button);
         backButton.setOnClickListener(this);
 
         final Button resultTableButton = findViewById(R.id.activity_result_table_result_button);
         resultTableButton.setOnClickListener(this);
+
+        final Button saveButton = findViewById(R.id.activity_result_save_button);
+        saveButton.setOnClickListener(this);
 
         resultImage = findViewById(R.id.activity_result_image);
         setImageAfterResult(imt);
@@ -47,15 +57,15 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.result_activity_back_button:
+            case R.id.activity_result_back_button:
                 finish();
                 break;
             case R.id.activity_result_table_result_button:
                 Intent intent = new Intent(this, TableActivity.class);
-                //intent.putExtra(MainActivity.INTENT_KEY_STORAGE, );
-                //intent.put
                 startActivity(intent);
                 break;
+            case R.id.activity_result_save_button:
+                saveResult(name, high, weigh, imt);
         }
     }
 
@@ -118,6 +128,15 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
         } else if (imt > 40) {
             resultImage.setImageResource(R.drawable.thor);
         }
+    }
+
+    private void saveResult(String name, double high, double weigh, double imt) {
+        String strHigh = Double.toString(high);
+        String strWeigh = Double.toString(weigh);
+        String strImt = Double.toString(imt);
+        ImtModel imtModel = new ImtModel(name, strHigh, strWeigh, strImt);
+        ImtRepository imtRepository = new ImtRepository(getApplicationContext());
+        imtRepository.saveResult(imtModel);
     }
 
 

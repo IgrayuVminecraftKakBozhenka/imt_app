@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 
 import com.igrayuvminecraftkakbozhenka.superapp.models.ImtModel;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public final class ImtRepository {
@@ -24,14 +22,14 @@ public final class ImtRepository {
     }
 
     public void saveResult(ImtModel imtModel) {
-        String parameters = "high: " + imtModel.getHigh() + ", weigh: " + imtModel.getWeigh() + ", imt: " + imtModel.getImt();
+        String parameters = "name: " + imtModel.getName() + " high: " + imtModel.getHigh() + ", weigh: " + imtModel.getWeigh() + ", imt: " + imtModel.getImt();
         SharedPreferences.Editor editor = results.edit();
         editor.putString(APP_PREFERENCES_NAME, parameters);
         editor.apply();
     }
 
-    public String getResult(String key) {
-        return results.getString(key, "");
+    public Map<String, ?> getResult() {
+        return results.getAll();
     }
 
 
