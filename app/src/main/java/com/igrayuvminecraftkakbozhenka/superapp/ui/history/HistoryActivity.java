@@ -5,12 +5,10 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.igrayuvminecraftkakbozhenka.superapp.R;
 import com.igrayuvminecraftkakbozhenka.superapp.data.ImtRepository;
-import com.igrayuvminecraftkakbozhenka.superapp.models.ImtModel;
-
-import java.util.ArrayList;
 
 public final class HistoryActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,10 +23,7 @@ public final class HistoryActivity extends AppCompatActivity implements View.OnC
         final Button clearButton = findViewById(R.id.activity_table_clear_button);
         clearButton.setOnClickListener(this);
 
-        ImtRepository imtRepository = new ImtRepository(getApplicationContext());
-        ArrayList<ImtModel> resultsToTable = new ArrayList<>(imtRepository.getAllResults());
-
-
+        final RecyclerView recyclerView = findViewById(R.id.recyclerView_list);
     }
 
     @Override
