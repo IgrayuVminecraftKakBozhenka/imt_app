@@ -29,8 +29,8 @@ public class CustomRecyclerAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.name.setText(names.get(position));
     }
 
     @Override
