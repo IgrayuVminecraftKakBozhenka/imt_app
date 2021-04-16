@@ -1,4 +1,4 @@
-package com.igrayuvminecraftkakbozhenka.superapp;
+package com.igrayuvminecraftkakbozhenka.superapp.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.igrayuvminecraftkakbozhenka.superapp.R;
+import com.igrayuvminecraftkakbozhenka.superapp.ui.result.ResultActivity;
 
 public final class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

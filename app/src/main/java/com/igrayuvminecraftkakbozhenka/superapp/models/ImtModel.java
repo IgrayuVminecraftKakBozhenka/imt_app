@@ -1,6 +1,7 @@
 package com.igrayuvminecraftkakbozhenka.superapp.models;
 
 public final class ImtModel {
+
     private final String name;
     private final String weigh;
     private final String high;
@@ -27,5 +28,11 @@ public final class ImtModel {
 
     public String getImt() {
         return imt;
+    }
+
+    @Override
+    public String toString() {
+        String s;
+        return s = name + "," + high + "," + weigh + "," + imt;
     }
 }

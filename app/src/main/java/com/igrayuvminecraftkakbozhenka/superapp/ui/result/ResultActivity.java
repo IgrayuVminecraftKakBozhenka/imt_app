@@ -1,4 +1,4 @@
-package com.igrayuvminecraftkakbozhenka.superapp;
+package com.igrayuvminecraftkakbozhenka.superapp.ui.result;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.igrayuvminecraftkakbozhenka.superapp.R;
 import com.igrayuvminecraftkakbozhenka.superapp.data.ImtRepository;
 import com.igrayuvminecraftkakbozhenka.superapp.models.ImtModel;
+import com.igrayuvminecraftkakbozhenka.superapp.ui.history.HistoryActivity;
+import com.igrayuvminecraftkakbozhenka.superapp.ui.main.MainActivity;
 
 public final class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -61,7 +64,7 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
                 finish();
                 break;
             case R.id.activity_result_table_result_button:
-                Intent intent = new Intent(this, TableActivity.class);
+                Intent intent = new Intent(this, HistoryActivity.class);
                 startActivity(intent);
                 break;
             case R.id.activity_result_save_button:
