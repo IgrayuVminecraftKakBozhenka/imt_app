@@ -10,28 +10,29 @@ import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.igrayuvminecraftkakbozhenka.superapp.R;
+import com.igrayuvminecraftkakbozhenka.superapp.models.ImtModel;
 
 import java.util.List;
 
-public class CustomRecyclerAdapter extends RecyclerView.Adapter {
+public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAdapter.MyViewHolder> {
 
-    private final List<String> names;
+    private final List<ImtModel> names;
 
-    public CustomRecyclerAdapter(List<String> names) {
+    public CustomRecyclerAdapter(List<ImtModel> names) {
         this.names = names;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CustomRecyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item, parent, false);
         return new MyViewHolder(itemView);
     }
     //----------------------------------------------------------------------------------------------
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MyViewHolder myViewHolder = (MyViewHolder)holder;
-        myViewHolder.name.setText(names.get(position));
+    public void onBindViewHolder(@NonNull CustomRecyclerAdapter.MyViewHolder holder, final int position) {
+        ImtModel imtModel = names.get(position);
+        holder.bind(imtModel);
     }
     //----------------------------------------------------------------------------------------------
     @Override
@@ -40,12 +41,12 @@ public class CustomRecyclerAdapter extends RecyclerView.Adapter {
     }
 
     //----------------------------------------------------------------------------------------------
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name;
-        TextView high;
-        TextView weigh;
-        TextView imt;
+        private final TextView name;
+        private final TextView high;
+        private final TextView weigh;
+        private final TextView imt;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -53,6 +54,13 @@ public class CustomRecyclerAdapter extends RecyclerView.Adapter {
             high = itemView.findViewById(R.id.recycler_view_text_view_high);
             weigh = itemView.findViewById(R.id.recycler_view_text_view_weigh);
             imt = itemView.findViewById(R.id.recycler_view_text_view_imt);
+        }
+
+        void bind(final ImtModel imtModel) {
+            name.setText(imtModel.getName());
+            high.setText(imtModel.getHigh());
+            weigh.setText(imtModel.getWeigh());
+            imt.setText(imtModel.getImt());
         }
     }
 }

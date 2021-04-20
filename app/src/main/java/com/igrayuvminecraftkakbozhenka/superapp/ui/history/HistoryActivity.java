@@ -1,16 +1,24 @@
 package com.igrayuvminecraftkakbozhenka.superapp.ui.history;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.igrayuvminecraftkakbozhenka.superapp.R;
 import com.igrayuvminecraftkakbozhenka.superapp.data.ImtRepository;
+import com.igrayuvminecraftkakbozhenka.superapp.models.ImtModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class HistoryActivity extends AppCompatActivity implements View.OnClickListener {
+
+    CustomRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +32,18 @@ public final class HistoryActivity extends AppCompatActivity implements View.OnC
         clearButton.setOnClickListener(this);
 
         final RecyclerView recyclerView = findViewById(R.id.recyclerView_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ImtRepository imtRepository = new ImtRepository(getApplicationContext());
+        adapter = new CustomRecyclerAdapter(imtRepository.getAllResults());
+        recyclerView.setAdapter(adapter);
+
+        ImtModel imtModel = new ImtModel("xyi", "120", "50", "23");
+        imtRepository.saveResult(imtModel);
+        adapter.notifyItemInserted(3);
     }
+
+
+
 
     @Override
     public void onClick(View v) {

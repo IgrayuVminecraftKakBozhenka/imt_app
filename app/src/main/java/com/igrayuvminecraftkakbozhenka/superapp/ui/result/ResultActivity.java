@@ -51,10 +51,6 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
 
         resultImage = findViewById(R.id.activity_result_image);
         setImageAfterResult(imt);
-
-        //ImtRepository save = new ImtRepository(name, Double.toString(high), Double.toString(weigh), imtString, getApplicationContext());
-
-
     }
 
     @Override
