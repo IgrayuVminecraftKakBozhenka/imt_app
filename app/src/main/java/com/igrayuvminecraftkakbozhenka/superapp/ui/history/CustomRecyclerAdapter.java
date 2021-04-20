@@ -27,12 +27,13 @@ public class CustomRecyclerAdapter extends RecyclerView.Adapter {
         final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item, parent, false);
         return new MyViewHolder(itemView);
     }
-
+    //----------------------------------------------------------------------------------------------
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.name.setText(names.get(position));
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        MyViewHolder myViewHolder = (MyViewHolder)holder;
+        myViewHolder.name.setText(names.get(position));
     }
-
+    //----------------------------------------------------------------------------------------------
     @Override
     public int getItemCount() {
         return names.size();
