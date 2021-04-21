@@ -1,5 +1,6 @@
 package com.igrayuvminecraftkakbozhenka.superapp.ui.result;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -88,7 +89,9 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
 
     private double getImt(final double high, final double weigh) {
         final double highMeter = high / 100;
-        return weigh / (highMeter * highMeter);
+        double imt = weigh / (highMeter * highMeter);
+        imt = Math.round(imt * 100.0) / 100.0;
+        return imt;
     }
 
     private int getEvaluation(double imt) {

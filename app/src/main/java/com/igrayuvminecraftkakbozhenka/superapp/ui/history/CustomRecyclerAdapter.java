@@ -16,9 +16,9 @@ import java.util.List;
 
 public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAdapter.MyViewHolder> {
 
-    private final List<ImtModel> names;
+    private List<ImtModel> names;
 
-    public CustomRecyclerAdapter(List<ImtModel> names) {
+    public void CustomRecyclerAdapter(List<ImtModel> names) {
         this.names = names;
     }
 

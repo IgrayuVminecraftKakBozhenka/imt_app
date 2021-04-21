@@ -34,12 +34,13 @@ public final class HistoryActivity extends AppCompatActivity implements View.OnC
         final RecyclerView recyclerView = findViewById(R.id.recyclerView_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ImtRepository imtRepository = new ImtRepository(getApplicationContext());
-        adapter = new CustomRecyclerAdapter(imtRepository.getAllResults());
+        adapter = new CustomRecyclerAdapter();
+        adapter.CustomRecyclerAdapter(imtRepository.getAllResults());
         recyclerView.setAdapter(adapter);
 
-        ImtModel imtModel = new ImtModel("xyi", "120", "50", "23");
-        imtRepository.saveResult(imtModel);
-        adapter.notifyItemInserted(3);
+ //       ImtModel imtModel = new ImtModel("xyi", "120", "50", "23");
+//        imtRepository.saveResult(imtModel);
+//        adapter.notifyItemInserted(3);
     }
 
 
