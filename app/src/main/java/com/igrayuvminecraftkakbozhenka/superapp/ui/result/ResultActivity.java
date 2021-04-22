@@ -138,7 +138,7 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
         String strImt = Double.toString(imt);
         ImtModel imtModel = new ImtModel(name, strHigh, strWeigh, strImt);
         ImtRepository imtRepository = new ImtRepository(getApplicationContext());
-        imtRepository.saveResult(imtModel);
+        imtRepository.saveResult(imtModel, getApplicationContext());
     }
 
 
