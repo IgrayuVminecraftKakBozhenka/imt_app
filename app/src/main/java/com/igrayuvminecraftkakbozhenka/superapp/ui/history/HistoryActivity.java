@@ -37,10 +37,6 @@ public final class HistoryActivity extends AppCompatActivity implements View.OnC
         adapter = new CustomRecyclerAdapter();
         adapter.CustomRecyclerAdapter(imtRepository.getAllResults(getApplicationContext()));
         recyclerView.setAdapter(adapter);
-
- //       ImtModel imtModel = new ImtModel("xyi", "120", "50", "23");
-//        imtRepository.saveResult(imtModel);
-//        adapter.notifyItemInserted(3);
     }
 
 

@@ -1,8 +1,10 @@
 package com.igrayuvminecraftkakbozhenka.superapp.ui.history;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,6 +49,7 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
         private final TextView high;
         private final TextView weigh;
         private final TextView imt;
+        private final LinearLayout background;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +57,8 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
             high = itemView.findViewById(R.id.recycler_view_text_view_high);
             weigh = itemView.findViewById(R.id.recycler_view_text_view_weigh);
             imt = itemView.findViewById(R.id.recycler_view_text_view_imt);
+            background = itemView.findViewById(R.id.recycler_view_linear_layout);
+
         }
 
         void bind(final ImtModel imtModel) {
@@ -61,6 +66,11 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
             high.setText(imtModel.getHigh());
             weigh.setText(imtModel.getWeigh());
             imt.setText(imtModel.getImt());
+            final int color = Color.rgb(0, 153, 0);
+            final double doubleImt = Double.parseDouble(imtModel.getImt());
+            if (doubleImt > 18.5 && doubleImt < 24.99 )
+                background.setBackgroundColor(color);
+
         }
     }
 }
