@@ -20,9 +20,7 @@ import java.util.Set;
 
 public final class ImtRepository {
 
-    private static final String APP_PREFERENCES_PARAMETERS = "parameters";
     private static final String APP_PREFERENCES_KEYS = "keys";
-    private static final String APP_PREFERENCES_NAME = "name";
     private static final String APP_PREFERENCES_HIGH = "high";
     private static final String APP_PREFERENCES_WEIGH = "weigh";
     private static final String APP_PREFERENCES_IMT = "imt";

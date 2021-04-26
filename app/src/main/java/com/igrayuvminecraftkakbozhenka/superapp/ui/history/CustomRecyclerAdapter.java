@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.igrayuvminecraftkakbozhenka.superapp.R;
@@ -30,12 +31,14 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
         final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item, parent, false);
         return new MyViewHolder(itemView);
     }
+
     //----------------------------------------------------------------------------------------------
     @Override
     public void onBindViewHolder(@NonNull CustomRecyclerAdapter.MyViewHolder holder, final int position) {
         ImtModel imtModel = names.get(position);
         holder.bind(imtModel);
     }
+
     //----------------------------------------------------------------------------------------------
     @Override
     public int getItemCount() {
@@ -49,15 +52,15 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
         private final TextView high;
         private final TextView weigh;
         private final TextView imt;
-        private final LinearLayout background;
+        private final CardView background;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.recycler_view_text_view_name);
-            high = itemView.findViewById(R.id.recycler_view_text_view_high);
-            weigh = itemView.findViewById(R.id.recycler_view_text_view_weigh);
-            imt = itemView.findViewById(R.id.recycler_view_text_view_imt);
-            background = itemView.findViewById(R.id.recycler_view_linear_layout);
+            name = itemView.findViewById(R.id.recycler_item_name);
+            high = itemView.findViewById(R.id.recycler_item_high);
+            weigh = itemView.findViewById(R.id.recycler_item_weigh);
+            imt = itemView.findViewById(R.id.recycler_item_imt);
+            background = itemView.findViewById(R.id.card_view);
 
         }
 
@@ -68,9 +71,9 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
             imt.setText(imtModel.getImt());
             final int color = Color.rgb(0, 153, 0);
             final double doubleImt = Double.parseDouble(imtModel.getImt());
-            if (doubleImt > 18.5 && doubleImt < 24.99 )
-                background.setBackgroundColor(color);
-
+            if (doubleImt > 18.5 && doubleImt < 24.99) {
+                background.setCardBackgroundColor(color);
+            }
         }
     }
 }
