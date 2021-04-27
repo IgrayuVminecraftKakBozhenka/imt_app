@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
 
 public class OpenDbHelper extends SQLiteOpenHelper {
 
@@ -13,10 +12,10 @@ public class OpenDbHelper extends SQLiteOpenHelper {
     public static final String COLUMN_HIGH = "high";
     public static final String COLUMN_WEIGH = "weigh";
     public static final String COLUMN_IMT = "imt";
-    private static int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 1;
 
     public OpenDbHelper(Context context) {
-        super(context, TABLE_NAME, null, 1);
+        super(context, TABLE_NAME, null, DATABASE_VERSION);
     }
 
     @Override

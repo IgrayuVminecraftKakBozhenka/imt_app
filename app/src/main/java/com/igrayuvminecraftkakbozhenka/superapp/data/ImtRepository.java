@@ -1,75 +1,61 @@
 package com.igrayuvminecraftkakbozhenka.superapp.data;
 
+import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.util.Log;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
+import com.igrayuvminecraftkakbozhenka.superapp.data.db.OpenDbHelper;
 import com.igrayuvminecraftkakbozhenka.superapp.models.ImtModel;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public final class ImtRepository {
 
-    private static final String APP_PREFERENCES_KEYS = "keys";
-    private static final String APP_PREFERENCES_HIGH = "high";
-    private static final String APP_PREFERENCES_WEIGH = "weigh";
-    private static final String APP_PREFERENCES_IMT = "imt";
-
-    private SharedPreferences keys;
+    private final ContentValues contentValues;
+    private final SQLiteDatabase db;
 
     public ImtRepository(final Context context) {
-        keys = context.getSharedPreferences(APP_PREFERENCES_KEYS, Context.MODE_PRIVATE);
+        this.contentValues = new ContentValues();
+        OpenDbHelper dbHelper = new OpenDbHelper(context);
+        this.db = dbHelper.getWritableDatabase();
     }
 
-    public void saveResult(ImtModel imtModel, Context context) {
-        SharedPreferences.Editor keysEditor = keys.edit();
-        keysEditor.putString(imtModel.getName(), imtModel.getName());
-        keysEditor.apply();
-
-        final String preferencesName = imtModel.getName();
-        SharedPreferences name = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE);
-        SharedPreferences.Editor nameEditor = name.edit();
-
-        nameEditor.putString(APP_PREFERENCES_HIGH, Double.toString(imtModel.getHigh()));
-        nameEditor.putString(APP_PREFERENCES_WEIGH, Double.toString(imtModel.getWeigh()));
-        nameEditor.putString(APP_PREFERENCES_IMT, Double.toString(imtModel.getImt()));
-        nameEditor.apply();
-
+    public void saveResult(ImtModel imtModel) {
+        contentValues.put(OpenDbHelper.COLUMN_NAME, imtModel.getName());
+        contentValues.put(OpenDbHelper.COLUMN_HIGH, imtModel.getHigh());
+        contentValues.put(OpenDbHelper.COLUMN_WEIGH, imtModel.getWeigh());
+        contentValues.put(OpenDbHelper.COLUMN_IMT, imtModel.getImt());
+        db.insert(OpenDbHelper.TABLE_NAME, null, contentValues);
     }
 
-    public List<ImtModel> getAllResults(Context context) {
-        Map<String, ?> keysFromKeysPreferences = keys.getAll();
-        Set<String> keys = keysFromKeysPreferences.keySet();
+    public List<ImtModel> getAllResults() {
+        Cursor cursor = db.query(OpenDbHelper.TABLE_NAME, null, null, null, null, null, null);
         List<ImtModel> imtModelsList = new ArrayList<>();
-        for (String key : keys) {
-            List<String> params = new ArrayList<>();
-            SharedPreferences prefs = context.getSharedPreferences(key, Context.MODE_PRIVATE);
-            params.add(key);
-            params.add(prefs.getString(APP_PREFERENCES_HIGH, ""));
-            params.add(prefs.getString(APP_PREFERENCES_WEIGH, ""));
-            params.add(prefs.getString(APP_PREFERENCES_IMT, ""));
-            ImtModel imtModel = new ImtModel(params.get(0), Double.parseDouble(params.get(1)), Double.parseDouble(params.get(2)), Double.parseDouble(params.get(3)));
-            imtModelsList.add(imtModel);
-            }
+
+        if (cursor.moveToFirst()) {
+            int nameColumnIndex = cursor.getColumnIndex(OpenDbHelper.COLUMN_NAME);
+            int highColumnIndex = cursor.getColumnIndex(OpenDbHelper.COLUMN_HIGH);
+            int weighColumnIndex = cursor.getColumnIndex(OpenDbHelper.COLUMN_WEIGH);
+            int imtColumnIndex = cursor.getColumnIndex(OpenDbHelper.COLUMN_IMT);
+            do {
+                String name = cursor.getString(nameColumnIndex);
+                double high = cursor.getDouble(highColumnIndex);
+                double weigh = cursor.getDouble(weighColumnIndex);
+                double imt = cursor.getDouble(imtColumnIndex);
+                ImtModel imtModel = new ImtModel(name, high, weigh, imt);
+                imtModelsList.add(imtModel);
+            } while (cursor.moveToNext());
+        } else {
+            cursor.close();
+        }
+
         return imtModelsList;
     }
 
     public void clearRepository() {
-        SharedPreferences.Editor keysEditor = keys.edit();
-        keysEditor.clear();
-        keysEditor.apply();
-
-
+        db.delete(OpenDbHelper.TABLE_NAME, null, null);
     }
 
 }

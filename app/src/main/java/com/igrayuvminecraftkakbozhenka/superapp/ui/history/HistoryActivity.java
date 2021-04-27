@@ -1,6 +1,5 @@
 package com.igrayuvminecraftkakbozhenka.superapp.ui.history;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,10 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.igrayuvminecraftkakbozhenka.superapp.R;
 import com.igrayuvminecraftkakbozhenka.superapp.data.ImtRepository;
-import com.igrayuvminecraftkakbozhenka.superapp.models.ImtModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public final class HistoryActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,7 +30,7 @@ public final class HistoryActivity extends AppCompatActivity implements View.OnC
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ImtRepository imtRepository = new ImtRepository(getApplicationContext());
         adapter = new CustomRecyclerAdapter();
-        adapter.CustomRecyclerAdapter(imtRepository.getAllResults(getApplicationContext()));
+        adapter.CustomRecyclerAdapter(imtRepository.getAllResults());
         recyclerView.setAdapter(adapter);
     }
 

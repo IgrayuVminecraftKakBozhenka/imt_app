@@ -1,6 +1,5 @@
 package com.igrayuvminecraftkakbozhenka.superapp.ui.result;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -133,12 +132,9 @@ public final class ResultActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void saveResult(String name, double high, double weigh, double imt) {
-        String strHigh = Double.toString(high);
-        String strWeigh = Double.toString(weigh);
-        String strImt = Double.toString(imt);
-        ImtModel imtModel = new ImtModel(name, strHigh, strWeigh, strImt);
+        ImtModel imtModel = new ImtModel(name, high, weigh, imt);
         ImtRepository imtRepository = new ImtRepository(getApplicationContext());
-        imtRepository.saveResult(imtModel, getApplicationContext());
+        imtRepository.saveResult(imtModel);
     }
 
 
