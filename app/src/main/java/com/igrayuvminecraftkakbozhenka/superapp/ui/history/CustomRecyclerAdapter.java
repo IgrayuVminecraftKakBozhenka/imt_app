@@ -65,12 +65,15 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
         }
 
         void bind(final ImtModel imtModel) {
+            final String strHigh = Double.toString(imtModel.getHigh());
+            final String strWeigh = Double.toString(imtModel.getWeigh());
+            final String strImt =Double.toString(imtModel.getImt());
             name.setText(imtModel.getName());
-            high.setText(imtModel.getHigh());
-            weigh.setText(imtModel.getWeigh());
-            imt.setText(imtModel.getImt());
+            high.setText(strHigh);
+            weigh.setText(strWeigh);
+            imt.setText(strImt);
             final int color = Color.rgb(0, 153, 0);
-            final double doubleImt = Double.parseDouble(imtModel.getImt());
+            final double doubleImt = imtModel.getImt();
             if (doubleImt > 18.5 && doubleImt < 24.99) {
                 background.setCardBackgroundColor(color);
             }

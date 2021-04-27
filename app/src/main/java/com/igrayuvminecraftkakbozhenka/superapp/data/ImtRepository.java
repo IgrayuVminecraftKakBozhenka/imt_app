@@ -40,9 +40,9 @@ public final class ImtRepository {
         SharedPreferences name = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE);
         SharedPreferences.Editor nameEditor = name.edit();
 
-        nameEditor.putString(APP_PREFERENCES_HIGH, imtModel.getHigh());
-        nameEditor.putString(APP_PREFERENCES_WEIGH, imtModel.getWeigh());
-        nameEditor.putString(APP_PREFERENCES_IMT, imtModel.getImt());
+        nameEditor.putString(APP_PREFERENCES_HIGH, Double.toString(imtModel.getHigh()));
+        nameEditor.putString(APP_PREFERENCES_WEIGH, Double.toString(imtModel.getWeigh()));
+        nameEditor.putString(APP_PREFERENCES_IMT, Double.toString(imtModel.getImt()));
         nameEditor.apply();
 
     }
@@ -58,7 +58,7 @@ public final class ImtRepository {
             params.add(prefs.getString(APP_PREFERENCES_HIGH, ""));
             params.add(prefs.getString(APP_PREFERENCES_WEIGH, ""));
             params.add(prefs.getString(APP_PREFERENCES_IMT, ""));
-            ImtModel imtModel = new ImtModel(params.get(0), params.get(1), params.get(2), params.get(3));
+            ImtModel imtModel = new ImtModel(params.get(0), Double.parseDouble(params.get(1)), Double.parseDouble(params.get(2)), Double.parseDouble(params.get(3)));
             imtModelsList.add(imtModel);
             }
         return imtModelsList;

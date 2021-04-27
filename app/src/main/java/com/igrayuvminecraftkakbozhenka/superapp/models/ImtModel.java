@@ -3,11 +3,11 @@ package com.igrayuvminecraftkakbozhenka.superapp.models;
 public final class ImtModel {
 
     private final String name;
-    private final String weigh;
-    private final String high;
-    private final String imt;
+    private final double weigh;
+    private final double high;
+    private final double imt;
 
-    public ImtModel(String name, String high, String weigh, String imt) {
+    public ImtModel(String name, double high, double weigh, double imt) {
         this.name = name;
         this.high = high;
         this.weigh = weigh;
@@ -18,15 +18,15 @@ public final class ImtModel {
         return name;
     }
 
-    public String getWeigh() {
+    public double getWeigh() {
         return weigh;
     }
 
-    public String getHigh() {
+    public double getHigh() {
         return high;
     }
 
-    public String getImt() {
+    public double getImt() {
         return imt;
     }
 
