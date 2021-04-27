@@ -1,6 +1,7 @@
 package com.igrayuvminecraftkakbozhenka.superapp.ui.history;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,22 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
         holder.bind(imtModel);
     }
 
+    @Override
+    public void onViewRecycled(@NonNull MyViewHolder holder) {
+        super.onViewRecycled(holder);
+
+        Log.d("Logd","onViewRecycled");
+        holder.printInfo();
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(@NonNull MyViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+
+        Log.d("Logd","onViewDetachedFromWindow");
+        holder.printInfo();
+    }
+
     //----------------------------------------------------------------------------------------------
     @Override
     public int getItemCount() {
@@ -64,6 +81,10 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
 
         }
 
+        void printInfo() {
+            Log.d("Logd", "Card " + name.getText());
+        }
+
         void bind(final ImtModel imtModel) {
             final String strHigh = Double.toString(imtModel.getHigh());
             final String strWeigh = Double.toString(imtModel.getWeigh());
@@ -76,7 +97,15 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
             final double doubleImt = imtModel.getImt();
             if (doubleImt > 18.5 && doubleImt < 24.99) {
                 background.setCardBackgroundColor(color);
-            }
+            }// else {
+             //   final int colort = Color.rgb(153, 0, 0);
+             //   background.setCardBackgroundColor(colort);
+            //}
+        }
+
+        void unbind() {
+            final int color = Color.rgb(153, 0, 0);
+            background.setCardBackgroundColor(color);
         }
     }
 }

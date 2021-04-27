@@ -32,6 +32,7 @@ public final class HistoryActivity extends AppCompatActivity implements View.OnC
         adapter = new CustomRecyclerAdapter();
         adapter.CustomRecyclerAdapter(imtRepository.getAllResults());
         recyclerView.setAdapter(adapter);
+        //recyclerView.setItemViewCacheSize(100);
     }
 
 
