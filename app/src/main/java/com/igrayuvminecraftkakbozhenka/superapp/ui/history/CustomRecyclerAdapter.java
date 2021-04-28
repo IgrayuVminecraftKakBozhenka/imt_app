@@ -5,11 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +20,7 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
 
     private List<ImtModel> names;
 
-    public void CustomRecyclerAdapter(List<ImtModel> names) {
+    public void customRecyclerAdapter(List<ImtModel> names) {
         this.names = names;
     }
 
@@ -44,7 +42,7 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
     public void onViewRecycled(@NonNull MyViewHolder holder) {
         super.onViewRecycled(holder);
 
-        Log.d("Logd","onViewRecycled");
+        Log.d("Logd", "onViewRecycled");
         holder.printInfo();
     }
 
@@ -52,7 +50,7 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
     public void onViewDetachedFromWindow(@NonNull MyViewHolder holder) {
         super.onViewDetachedFromWindow(holder);
 
-        Log.d("Logd","onViewDetachedFromWindow");
+        Log.d("Logd", "onViewDetachedFromWindow");
         holder.printInfo();
     }
 
@@ -88,7 +86,7 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
         void bind(final ImtModel imtModel) {
             final String strHigh = Double.toString(imtModel.getHigh());
             final String strWeigh = Double.toString(imtModel.getWeigh());
-            final String strImt =Double.toString(imtModel.getImt());
+            final String strImt = Double.toString(imtModel.getImt());
             name.setText(imtModel.getName());
             high.setText(strHigh);
             weigh.setText(strWeigh);
@@ -97,15 +95,10 @@ public final class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecy
             final double doubleImt = imtModel.getImt();
             if (doubleImt > 18.5 && doubleImt < 24.99) {
                 background.setCardBackgroundColor(color);
-            }// else {
-             //   final int colort = Color.rgb(153, 0, 0);
-             //   background.setCardBackgroundColor(colort);
-            //}
-        }
-
-        void unbind() {
-            final int color = Color.rgb(153, 0, 0);
-            background.setCardBackgroundColor(color);
+            } else {
+                final int colour = Color.rgb(255, 0, 0);
+                background.setCardBackgroundColor(colour);
+            }
         }
     }
 }
